@@ -1,0 +1,116 @@
+/* DOM ================================================================= */
+
+.todo-example {
+    padding: 30px;
+    color: black;
+    background: white;
+}
+
+.todo-container {
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eee;
+    color: black;
+}
+
+.todo-container .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.todo-container .form {
+    display: flex;
+    gap: 10px;
+    width: 300px;
+}
+
+.todo-container .todos,
+.todo-container .completed {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+    max-height: 200px;
+    width: 300px;
+
+    padding-bottom: 10px;
+}
+
+.todo-container .todo {
+    display: flex;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    align-items: center;
+    gap: 10px;
+}
+
+.todo-container .todo:hover {
+    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.5);
+}
+
+.todo-container .completed {
+    opacity: 0.5;
+}
+
+.todo-container input[type="text"] {
+    font-size: 16px;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+.todo-container input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.todo-container button {
+    font-size: 16px;
+    border-radius: 3px;
+    border: 0px;
+    cursor: pointer;
+    background: #555;
+    color: white;
+}
+
+.todo-container button:hover {
+    background: #222;
+}
+
+/* AJAX ================================================================= */
+
+.ajax-example {
+    background: white;
+    padding: 20px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ajax-example button {
+    width: 100px;
+}
+
+.ajax-example .json,
+.ajax-example .html {
+    padding: 20px;
+    overflow: auto;
+    border: 1px solid gray;
+    border-style: dashed;
+    height: 100px;
+}
