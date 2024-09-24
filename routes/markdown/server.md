@@ -125,7 +125,7 @@ The keys will be located in `~/.ssh`.
 Now you just transfer them to the server like this:
 
 ```text
-ssh-copy-id -i ~/.ssh_ed25519.pub user@46.101.132.192
+ssh-copy-id -i ~/.ssh/id_ed25519.pub user@46.101.132.192
 ```
 
 You need to use your own `public` key name.

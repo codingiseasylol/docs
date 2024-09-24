@@ -124,8 +124,8 @@ events {} # Needed to be a valid conf file.
 }
 ```
 
-The app is no available at:
+The app is now available at:
 
-```
+```text
 46.101.132.192
 ```

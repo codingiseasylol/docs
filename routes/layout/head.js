@@ -2,6 +2,16 @@ let head = /*html*/ `
     <!DOCTYPE html>
     <html>
         <head>
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY86M0XEG"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-WBY86M0XEG');
+            </script>
+
             <title>DOCS - codingiseasy.lol</title>
             <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
             <link rel="icon" href="/favicon.ico" type="image/x-icon" />

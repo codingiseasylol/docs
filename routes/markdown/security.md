@@ -108,9 +108,85 @@ The third part `WW218MHiBX2VaU-GmTXmXvzTBe-4ZwSeg2E_HNlbTr0` (verification) deco
 
 So, what is `SHA256`?
 
-#### Cookies
+#### httpOnly cookies
 
-#### httpOnly
+```js
+let token = jwt.sign(
+    {
+        username: user.username,
+        userId: user.id,
+    },
+    config.tokenSecret,
+    {
+        expiresIn: "7d",
+    }
+);
+
+res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+});
+```
+
+#### Middleware
+
+This is some code that is executed between:
+
+-   Receiving the request and executing the query. ex. Authentication.
+-   Executing the query and sending the response back. ex. Error logging.
+
+```js
+let express = require("express");
+let app = express();
+let port = 3000;
+
+app.use(express.json());
+
+function authenticationMiddleware(req, res, next) {
+    let token = req.cookies.token;
+
+    jwt.verify(token, config.tokenSecret, (err, decoded) => {
+        if (err) {
+            res.status(401).send({
+                status: 401,
+                message: "No access!",
+            });
+        } else {
+            req.userId = decoded.userId;
+            next();
+        }
+    });
+}
+
+function errorLogger(err, req, res, next) {
+    console.error(`Error occurred: ${err.message}`);
+    res.status(500).send({ error: "Internal Server Error" });
+}
+
+app.use(authenticationMiddleware);
+
+app.get("/api/todos", (req, res, next) => {
+    try {
+        let query = `
+            select *
+            from todo
+            ;
+        `
+
+        let todos = await pool.query(query);
+
+        res.status(200).send(todos);
+    } catch (error) {
+        next(error)
+    }
+});
+
+app.use(errorLogger);
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
+```
 
 #### SHA256
 
