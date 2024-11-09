@@ -120,14 +120,18 @@ h5 {
     text-decoration: none;
     color: white;
     padding: 5px 5px 5px 20px;
-}
-
-.sidebar a:hover {
-    background: rgba(0, 0, 0, 0.3);
     border-radius: 3px;
 }
 
-.sidebar h4 {
+.sidebar a:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.active {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.sidebar h3 {
     margin: 0px;
     display: inline;
 }

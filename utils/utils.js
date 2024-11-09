@@ -12,10 +12,30 @@ function slugify(str) {
         .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
 }
 
+let insideSection = false; // Flag to track if we are inside a section
+
 const renderer = {
     heading(object) {
         const id = slugify(object.text);
-        return `<h${object.depth} id="${id}" class="anchor">${object.text}</h${object.depth}>`;
+
+        // Check if we need to close the previous section
+        let sectionClose = "";
+        if (insideSection && object.depth <= 4) {
+            sectionClose = "</section>";
+            insideSection = false;
+        }
+
+        // Check if we need to start a new section for <h4>
+        let sectionOpen = "";
+        if (object.depth === 4) {
+            sectionOpen = `<section id="${id}" class="anchor">`;
+            insideSection = true;
+        }
+
+        return `${sectionClose}${sectionOpen}<h${object.depth}>${object.text}</h${object.depth}>`;
+    },
+    image(image) {
+        return `<img src="${image.href}" loading="lazy" />`;
     },
 };
 
@@ -107,13 +127,13 @@ module.exports.generateSidebar = () => {
             let links = "";
 
             object.items?.forEach((item) => {
-                links += `<a href="#${item.link}">${item.title}</a>`;
+                links += `<a href="#${item.link}" id="link-${item.link}">${item.title}</a>`;
             });
 
             sidebar += `
                 <details open>
                     <summary>
-                        <h4>${object.title || ""}</h4>
+                        <h3>${object.title || ""}</h3>
                     </summary>
                     ${links}
                 </details>

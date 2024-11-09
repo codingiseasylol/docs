@@ -17,7 +17,6 @@ router.get("/", (req, res) => {
 
         <div class="content">
             
-            
             ${generateMarkdown()}
 
         </div>

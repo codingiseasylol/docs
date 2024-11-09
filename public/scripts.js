@@ -1,3 +1,47 @@
+// INITIAL ANCHOR =======================================================
+
+window.addEventListener("load", () => {
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+
+        if (target) {
+            target.scrollIntoView();
+        }
+    }
+});
+
+// MENU ITEM HIGHLIGHTER =======================================================
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            const link = document.getElementById(`link-${entry.target.id}`);
+
+            if (entry.isIntersecting) {
+                link.classList.add("active");
+
+                link.scrollIntoView({
+                    behavior: "smooth", // Animates the scrolling
+                    block: "nearest", // Aligns the element at the nearest position in the viewport
+                    inline: "center", // Aligns it horizontally to the center if applicable
+                });
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    },
+    {
+        // Adjust threshold or rootMargin as needed
+        threshold: 0, // Adjusts how much of the section needs to be visible (50%)
+    }
+);
+
+const titles = document.querySelectorAll("section");
+
+titles.forEach((title) => {
+    observer.observe(title);
+});
+
 // HAMBURGER =======================================================
 
 let sidebar = document.querySelector(".sidebar");
@@ -15,7 +59,6 @@ let links = document.querySelectorAll(".sidebar a");
 links.forEach((element) => {
     // Add an event listener to each element
     element.addEventListener("click", () => {
-        console.log("foo");
         sidebar.className = "sidebar hidden";
     });
 });

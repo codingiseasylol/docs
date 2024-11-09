@@ -82,6 +82,12 @@ After that, you are connected to the server you created.
 
 ![](pics/topics/ssh-root.jpg)
 
+To change your `root` password, use:
+
+```bash
+passwd root
+```
+
 You now **MUST** create a `user` other than `root`. This is for security reasons:
 
 ```bash
@@ -149,7 +155,7 @@ You need to replicate whatever you have on your local machine.
 In this case that would be...
 
 -   Update your Linux packages. [INSTRUCTIONS](/#update)
--   Install `nvm` and `nodejs`. [INSTRUCTIONS](/#nvm)
+-   Install `nvm` and `nodejs`. [INSTRUCTIONS](/#node)
 -   Install `mysql`. [INSTRUCTIONS](/#mysql)
 -   Install `nginx` (webserver). [INSTRUCTIONS](/#nginx)
 
