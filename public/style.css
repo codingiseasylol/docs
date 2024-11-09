@@ -102,13 +102,15 @@ h5 {
 }
 
 .sidebar summary {
-    cursor: pointer;
+    z-index: 999;
     background: #222;
+    cursor: pointer;
     position: sticky;
     top: 0px;
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     border-radius: 3px;
     margin-bottom: 2px;
+    /* border-bottom: 2px solid #666; */
 }
 
 .sidebar h5,
@@ -118,17 +120,18 @@ h5 {
 
 .sidebar a {
     text-decoration: none;
-    color: white;
+    color: #999;
     padding: 5px 5px 5px 20px;
     border-radius: 3px;
+    margin-bottom: 2px;
 }
 
-.sidebar a:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
+.sidebar a:hover,
 .active {
-    background: rgba(0, 0, 0, 0.8) !important;
+    scroll-margin-top: 40px;
+    /* background: rgba(0, 0, 0, 0.5); */
+    color: white !important;
+    font-weight: bold;
 }
 
 .sidebar h3 {
@@ -184,7 +187,7 @@ h5 {
 } */
 
 .markdown .anchor {
-    scroll-margin-top: 30px;
+    scroll-margin-top: 0px;
 }
 
 .markdown {

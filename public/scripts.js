@@ -21,9 +21,9 @@ const observer = new IntersectionObserver(
                 link.classList.add("active");
 
                 link.scrollIntoView({
-                    behavior: "smooth", // Animates the scrolling
-                    block: "nearest", // Aligns the element at the nearest position in the viewport
-                    inline: "center", // Aligns it horizontally to the center if applicable
+                    behavior: "instant", // Animates the scrolling
+                    block: "center", // Aligns the element at the nearest position in the viewport
+                    inline: "nearest", // Aligns it horizontally to the center if applicable
                 });
             } else {
                 link.classList.remove("active");
